@@ -51,8 +51,8 @@ def train(model, args):
     # Training dataloader
     data_root = cfg.config[args.dataset]['data_root']
     data_lst = cfg.config[args.dataset]['data_lst']
-    mean_bgr = np.array(cfg.config[args.dataset]['mean_bgr'])
-    train_img = Data(data_root, data_lst, mean_bgr=mean_bgr)
+    mean_rgb = np.array(cfg.config[args.dataset]['mean_rgb'])
+    train_img = Data(data_root, data_lst, mean_rgb=mean_rgb)
     trainloader = torch.utils.data.DataLoader(train_img, batch_size=args.batch_size, shuffle=True, num_workers=20)
     n_train = len(trainloader)
     
@@ -62,8 +62,8 @@ def train(model, args):
     # Validation dataloader
     val_root = cfg.config_val[args.dataset]['data_root']
     val_lst = cfg.config_val[args.dataset]['data_lst']
-    mean_bgr = np.array(cfg.config_val[args.dataset]['mean_bgr'])
-    val_img = Data(val_root, val_lst, mean_bgr=mean_bgr)
+    mean_rgb = np.array(cfg.config_val[args.dataset]['mean_rgb'])
+    val_img = Data(val_root, val_lst, mean_rgb=mean_rgb)
     valloader = torch.utils.data.DataLoader(val_img, batch_size=args.batch_size, shuffle=False, num_workers=20)
 
     start_time = time.time()
